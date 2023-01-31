@@ -1,0 +1,29 @@
+Creating a deployable artifact
+In the video, you saw how to run a PySpark program locally by first zipping your code. This packaging step becomes more important when your code consists of many modules. Packaging in the zip format is done by navigating to the root folder of your pipeline using the cd command and running the following command:
+
+zip --recurse-paths zip_file.zip pipeline_folder
+In this exercise you will first create a zipped archive, to pass along as dependencies of your Spark job. Then you have one of the prerequisites to running a Spark job locally, which you know now is a good way to get simple issues resolved quickly.
+
+
+Use zip with the --recurse-paths option.
+In this example, the name of your zipfile is pydiaper.zip and the name of your pipeline folder is pydiaper.
+
+
+
+
+
+Submitting your Spark job
+With the dependencies of a job ready to be distributed across a cluster’s nodes, you can submit a job to a cluster easily. In this exercise, you'll be testing the job locally.
+
+To run a PySpark application locally, you need to call:
+
+spark-submit --py-files PY_FILES MAIN_PYTHON_FILE
+with PY_FILES being either a zipped archive, a Python egg or separate Python files that will be placed on the PYTHONPATH environment variable of your cluster's nodes. The MAIN_PYTHON_FILE should be the entry point of your application.
+
+In this particular exercise, the path of the zipped archive is spark_pipelines/pydiaper/pydiaper.zip whereas the path to your application
+
+In the template
+spark-submit --py-files PY_FILES MAIN_PYTHON_FILE
+PY_FILES and MAIN_PYTHON_FILE are placeholders. You should replace them with the real values related to your PySpark application, which are given in this exercise’s context.
+
+If you decide to navigate to different folders using cd, make sure to modify the paths relative to where you are.
